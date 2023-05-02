@@ -9,28 +9,21 @@ import org.testng.annotations.Test;
 import platform.Platform;
 import test_data.DataObjectBuilder;
 import test_data.models.LoginData;
+import test_flows.BaseFlow;
 import test_flows.authentication.LoginFlow;
+import tests.BaseTest;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
     @Test(dataProvider = "loginData")
     public void loginTest(LoginData loginData) {
 
-        AppiumDriver<MobileElement> appiumDriver = DriverFactory.getDriver(Platform.ANDROID);
+        LoginFlow loginFlow = new LoginFlow(appiumDriver, loginData.getUsername(), loginData.getPassword());
+        loginFlow.clickToLoginScreen();
+        loginFlow.login();
+        loginFlow.verification();
 
-        try {
-            //Click Login Screen
-            MobileElement navLoginScreenBtnElem = appiumDriver.findElement(MobileBy.AccessibilityId("Login"));
-            navLoginScreenBtnElem.click();
-
-            LoginFlow loginFlow = new LoginFlow(appiumDriver, loginData.getUsername(), loginData.getPassword());
-            loginFlow.login();
-            loginFlow.verification();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        appiumDriver.quit();
     }
+
     @DataProvider
     public LoginData[] loginData() {
 

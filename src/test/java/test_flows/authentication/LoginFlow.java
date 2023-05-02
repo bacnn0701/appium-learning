@@ -6,15 +6,14 @@ import models.components.login.LoginFormComp;
 import models.pages.LoginScreen;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.testng.Assert;
+import test_flows.BaseFlow;
 
-public class LoginFlow {
-
-    AppiumDriver<MobileElement> appiumDriver;
+public class LoginFlow extends BaseFlow {
     private String username;
     private String password;
 
     public LoginFlow(AppiumDriver<MobileElement> appiumDriver, String username, String password) {
-        this.appiumDriver = appiumDriver;
+        super(appiumDriver);
         this.username = username;
         this.password = password;
     }
@@ -24,8 +23,8 @@ public class LoginFlow {
         LoginScreen loginScreen = new LoginScreen(appiumDriver);
         LoginFormComp loginFormComp = loginScreen.loginFormComp();
 
-        if (!username.isEmpty()) loginFormComp.inputEmail(username);
-        if (!password.isEmpty()) loginFormComp.inputPassword(password);
+        if (username != null && !username.isEmpty()) loginFormComp.inputEmail(username);
+        if (password != null && !password.isEmpty()) loginFormComp.inputPassword(password);
         loginFormComp.clickOnLogin();
     }
 
