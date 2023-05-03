@@ -43,7 +43,7 @@ public class LoginFlow extends BaseFlow {
         }
 
         if (!isUsernameValid) {
-            Assert.assertEquals(loginFormComp.getIncorrectEmailText(),"Please enter a valid email address");
+            Assert.assertEquals(loginFormComp.getIncorrectEmailText(),"Please enter a valid email");
         }
 
         if (!isPassValid) {

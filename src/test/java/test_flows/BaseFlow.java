@@ -18,4 +18,9 @@ public class BaseFlow {
         LoginScreen loginScreen = new LoginScreen(appiumDriver);
         loginScreen.bottomNavComp().clickOnLoginIcon();
     }
+
+    public void clickToFormScreen() {
+        LoginScreen loginScreen = new LoginScreen(appiumDriver);
+        loginScreen.bottomNavComp().clickOnFormIcon();
+    }
 }
