@@ -1,10 +1,8 @@
 package test_flows;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import models.pages.LoginScreen;
-import org.openqa.selenium.By;
 
 public class BaseFlow {
 

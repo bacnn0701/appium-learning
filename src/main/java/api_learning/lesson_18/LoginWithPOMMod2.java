@@ -4,14 +4,14 @@ import driver.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import models.pages.LoginPOMMod3;
+import models.pages.LoginPOMMod2;
 import platform.Platform;
 
-public class LoginWithPOMMod3 {
+public class LoginWithPOMMod2 {
 
     public static void main(String[] args) {
 
-        AppiumDriver<MobileElement> appiumDriver = DriverFactory.getDriver(Platform.ANDROID);
+        AppiumDriver<MobileElement> appiumDriver = DriverFactory.getDriver(Platform.android);
 
         try {
             //Click Login Screen
@@ -19,8 +19,10 @@ public class LoginWithPOMMod3 {
             navLoginScreenBtnElem.click();
 
             //Fill data & login
-            LoginPOMMod3 loginPOMMod3 = new LoginPOMMod3(appiumDriver);
-            loginPOMMod3.inputEmail("teo@sth.com").inputPassword("12345678").clickOnLogin();
+            LoginPOMMod2 loginPOMMod2 = new LoginPOMMod2(appiumDriver);
+            loginPOMMod2.inputEmail("teo@sth.com");
+            loginPOMMod2.inputPassword("12345678");
+            loginPOMMod2.clickOnLogin();
 
             Thread.sleep(3000);
         } catch (Exception e) {

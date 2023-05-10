@@ -2,9 +2,7 @@ package api_learning.lesson_18;
 
 import driver.DriverFactory;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import models.pages.LoginPOMMod1;
 import models.pages.LoginScreen;
 import platform.Platform;
 
@@ -12,7 +10,7 @@ public class LoginWithComponent {
 
     public static void main(String[] args) {
 
-        AppiumDriver<MobileElement> appiumDriver = DriverFactory.getDriver(Platform.ANDROID);
+        AppiumDriver<MobileElement> appiumDriver = DriverFactory.getDriver(Platform.android);
 
         try {
 

@@ -4,16 +4,14 @@ import driver.DriverFactory;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
-import models.pages.LoginPOMMod1;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import models.pages.LoginPOMMod3;
 import platform.Platform;
 
-public class LoginWithPOMMod1 {
+public class LoginWithPOMMod3 {
 
     public static void main(String[] args) {
 
-        AppiumDriver<MobileElement> appiumDriver = DriverFactory.getDriver(Platform.ANDROID);
+        AppiumDriver<MobileElement> appiumDriver = DriverFactory.getDriver(Platform.android);
 
         try {
             //Click Login Screen
@@ -21,10 +19,8 @@ public class LoginWithPOMMod1 {
             navLoginScreenBtnElem.click();
 
             //Fill data & login
-            LoginPOMMod1 loginPOMMod1 = new LoginPOMMod1(appiumDriver);
-            loginPOMMod1.inputEmailElem().sendKeys("teo@sth.com");
-            loginPOMMod1.passEmailElem().sendKeys("12345678");
-            loginPOMMod1.loginBtnElem().click();
+            LoginPOMMod3 loginPOMMod3 = new LoginPOMMod3(appiumDriver);
+            loginPOMMod3.inputEmail("teo@sth.com").inputPassword("12345678").clickOnLogin();
 
             Thread.sleep(3000);
         } catch (Exception e) {

@@ -1,17 +1,11 @@
 package tests.authen;
 
-import driver.DriverFactory;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
 import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import platform.Platform;
 import test_data.DataObjectBuilder;
 import test_data.models.LoginData;
-import test_flows.BaseFlow;
 import test_flows.authentication.LoginFlow;
 import tests.BaseTest;
 

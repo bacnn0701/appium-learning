@@ -15,7 +15,6 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Driver;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,12 +28,13 @@ public class BaseTest {
 
     private String udid;
     private String systemPort;
+    private String platformName;
+    private String platformVersion;
     protected AppiumDriver<MobileElement> getDriver() {
-        return driverThread.get().getDriver(Platform.ANDROID,udid,systemPort);
+        return driverThread.get().getDriver(Platform.valueOf(platformName),udid,systemPort,platformVersion);
     }
     @BeforeTest
-    @Parameters({"udid","systemPort"})
-    public void initDriver(String udid, String systemPort){
+    public void initAppiumSession(String udid, String systemPort, @Optional("platformVersion") String platformVersion){
         this.udid = udid;
         this.systemPort = systemPort;
         driverThread = ThreadLocal.withInitial(() -> {
@@ -42,6 +42,14 @@ public class BaseTest {
             driverThreadPool.add(driverThread);
             return driverThread;
         });
+    }
+    @BeforeClass
+    @Parameters({"udid", "systemPort", "platformName", "platformVersion"})
+    public void getTestParams(String udid, String systemPort, String platformName, @Optional("platformVersion") String platformVersion){
+        this.udid = udid;
+        this.systemPort = systemPort;
+        this.platformName = platformName;
+        this.platformVersion = platformVersion;
     }
     @AfterTest(alwaysRun = true)
     public void tearDown() {
