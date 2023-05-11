@@ -33,8 +33,7 @@ public class Main implements MobileCapabilityTypeEx {
         }
 
         // Get platform
-//        String platformName = System.getProperty("platform");
-        String platformName = System.getenv("platform");
+        String platformName = System.getProperty("platform");
         if(platformName == null){
             throw new IllegalArgumentException("[ERR] Please provide platform via -Dplatform");
         }
@@ -46,7 +45,7 @@ public class Main implements MobileCapabilityTypeEx {
 
         // Devices under test
         List<String> iPhoneDeviceList = Arrays.asList("iPhone 12", "iPhone 13");
-        List<String> androidDeviceList = Arrays.asList("emulator-5554");
+        List<String> androidDeviceList = Arrays.asList("R52MB09ENDT","127.0.0.1:55563");
         List<String> deviceList = platformName.equalsIgnoreCase("ios") ? iPhoneDeviceList : androidDeviceList;
 
         // Assign test classes into devices
@@ -91,11 +90,11 @@ public class Main implements MobileCapabilityTypeEx {
         System.out.println(suite.toXml());
 
         // Add Testsuite into suite list
-//        List<XmlSuite> suites = new ArrayList<>();
-//        suites.add(suite);
-//
-//        // Invoke run method
-//        testNG.setXmlSuites(suites);
-//        testNG.run();
+        List<XmlSuite> suites = new ArrayList<>();
+        suites.add(suite);
+
+        // Invoke run method
+        testNG.setXmlSuites(suites);
+        testNG.run();
     }
 }

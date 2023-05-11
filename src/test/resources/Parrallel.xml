@@ -1,20 +1,22 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-
-<suite name="ParallelTest" parallel="tests" thread-count="10">
-    <test name="Regression Form" >
-        <parameter name="udid" value="127.0.0.1:55251"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="10" parallel="tests" name="Regression">
+    <test thread-count="10" parallel="tests" name="R52MB09ENDT">
+        <parameter name="platformVersion" value="15.0"/>
+        <parameter name="udid" value="R52MB09ENDT"/>
+        <parameter name="platformName" value="android"/>
         <parameter name="systemPort" value="8300"/>
         <classes>
-            <class name="tests.swipe.FormTest" />
+            <class name="tests.authen.LoginTest"/>
         </classes>
-    </test>
-    <test name="Regression Authen" >
-        <parameter name="udid" value="R52MB09ENDT"/>
+    </test> <!-- R52MB09ENDT -->
+    <test thread-count="10" parallel="tests" name="127.0.0.1:49909">
+        <parameter name="platformVersion" value="15.0"/>
+        <parameter name="udid" value="127.0.0.1:50736"/>
+        <parameter name="platformName" value="android"/>
         <parameter name="systemPort" value="8400"/>
         <classes>
-            <class name="tests.authen.LoginTest" />
-            <class name="tests.swipe.FormTest" />
+            <class name="tests.swipe.FormTest"/>
         </classes>
-    </test>
-
-</suite>
+    </test> <!-- 127.0.0.1:50736 -->
+</suite> <!-- Regression -->

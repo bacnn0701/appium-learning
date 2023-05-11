@@ -24,7 +24,7 @@ public class LoginTest extends BaseTest {
     @DataProvider
     public LoginData[] loginData() {
 
-        return DataObjectBuilder.buildDataObject("/src/test/java/test_data/data_file/AuthenData.json", LoginData[].class);
+        return DataObjectBuilder.buildDataObject("/src/main/java/test_data/data_file/AuthenData.json", LoginData[].class);
     }
 
 
